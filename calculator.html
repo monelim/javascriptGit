@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        h1 {
+            color: cornflowerblue;
+        }
+        li {
+            list-style-type: none;
+            float: left;
+            background-color: coral;
+            border-radius: 2px;
+            margin: 10px;
+        }
+
+        input[type=text] {
+            margin: 5px;
+            width: 340px;
+            height: 50px;
+
+            background: lightgoldenrodyellow;
+            text-align: right;
+
+            font-size: 35px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        #content {
+            margin: 5px;
+            width: 355px;
+            height: 380px;
+            border: 8px solid teal;
+
+            background-color: gold;
+        }
+
+        #content>#bracket {
+            float: left;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+
+        #content>#bracket>#btn_bk {
+            margin-top: 5px;
+            margin-left: 5px;
+            width: 55px;
+            height: 50px;
+
+            border: 2px solid teal;
+            background-color: rgb(189, 235, 121);
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        #content>#container {
+            margin-top: 10px;
+            float: left;
+
+        }
+
+        #content>#container>#number {
+            margin-top: 0;
+            margin-bottom: 15px;
+            margin-left: 10px;
+            width: 200px;
+            height: 250px;
+
+            float: left;
+        }
+
+        #content>#container>#number>.nb>#btn_nb {
+            margin-top: 5px;
+            margin-left: 5px;
+            width: 55px;
+            height: 50px;
+
+            border: 2px solid teal;
+            background-color: rgb(189, 235, 121);
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        #content>#container>#number>.nb>#btn_zero {
+            margin-top: 5px;
+            margin-left: 5px;
+            width: 120px;
+            height: 50px;
+
+            border: 2px solid teal;
+            background-color: rgb(189, 235, 121);
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        #content>#container>#calculator {           
+            width: 60px;
+            height: 250px;
+
+            float: left;
+        }
+
+        #content>#container>#calculator>.cc>#btn_cc {
+            margin-top: 5px;
+            margin-left: 2px;
+            width: 55px;
+            height: 50px;
+
+            border: 2px solid teal;
+            background-color: rgb(189, 235, 121);
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        #content>#container>#btnA {
+            margin-top: 5px;
+            margin-left: 10px;
+            width: 55px;
+            height: 215px;
+
+            border: 2px solid teal;
+            background-color: rgb(189, 235, 121);
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+
+        var doa = function(i) {
+            console.log('i = '+i);
+            // document.getElementById("inputA").value = eval(doa);
+            if( i == '(' || i == ')' || i == '{' )
+                if(document.getElementById("inputA").value == '0')
+                    document.getElementById("inputA").value = i;
+                else
+                    document.getElementById("inputA").value += i;
+
+            if( i == 'CE')
+                document.getElementById("inputA").value = "0";
+
+            if( i == '9' || i == '8' || i == '7' || i == '6' || i == '5' ){
+                if(document.getElementById("inputA").value == '0')
+                    document.getElementById("inputA").value = i;
+                else
+                    document.getElementById("inputA").value += i;
+
+            }
+
+            if( i == '4' || i == '3' || i == '2' || i == '1' || i == '0'){
+                if(document.getElementById("inputA").value == '0')
+                    document.getElementById("inputA").value = i;
+                else
+                    document.getElementById("inputA").value += i;
+            }
+
+            if( i == '.' || i == '/' || i == '*' || i == '+' || i == '-' )
+                if(document.getElementById("inputA").value == '0')
+                    document.getElementById("inputA").value = i;
+                else
+                    document.getElementById("inputA").value += i;
+
+            if( i =='=' ){
+                document.getElementById("inputA").value = eval(document.getElementById("inputA").value);   
+            }
+        }        
+
+    </script>
+
+</head>
+
+<body>
+    <h1>사칙연산 계산기</h1>
+    <h1>덧셈, 나눗셈, 곱셈, 뺄셈</h1>
+
+    <div id="content">
+
+        <div id="input">
+            <input type="text" id="inputA">
+        </div>
+
+        <div id="bracket">
+            <button id="btn_bk" onclick="doa( '(' )">(</button>
+            <button id="btn_bk" onclick="doa( ')' )">)</button>
+            <button id="btn_bk" onclick="doa( '{' )">{</button>
+            <button id="btn_bk" onclick="doa( '}' )">}</button>
+            <button id="btn_bk" onclick="doa( 'CE' )">CE</button>
+        </div>
+
+        <div id="container">
+
+            <div id="number">
+                <div class="nb">
+                    <button id="btn_nb" onclick="doa( '7' )">7</button>
+                    <button id="btn_nb" onclick="doa( '8' )">8</button>
+                    <button id="btn_nb" onclick="doa( '9' )">9</button>
+                </div>
+                <div class="nb">
+                    <button id="btn_nb" onclick="doa( '4' )">4</button>
+                    <button id="btn_nb" onclick="doa( '5' )">5</button>
+                    <button id="btn_nb" onclick="doa( '6' )">6</button>
+                </div>
+                <div class="nb">
+                    <button id="btn_nb" onclick="doa( '1' )">1</button>
+                    <button id="btn_nb" onclick="doa( '2' )">2</button>
+                    <button id="btn_nb" onclick="doa( '3' )">3</button>
+                </div>
+                <div class="nb">
+                    <button id="btn_zero" onclick="doa( '0' )">0</button>
+                    <button id="btn_nb" onclick="doa( '.' )">.</button>
+                </div>
+            </div>
+
+
+            <div id="calculator">
+                <div class="cc">
+                    <button id="btn_cc" onclick="doa( '/' )">/</button>
+                    <button id="btn_cc" onclick="doa( '*' )">*</button>
+                    <button id="btn_cc" onclick="doa( '+' )">+</button>
+                    <button id="btn_cc" onclick="doa( '-' )">-</button>
+                </div>
+            </div>
+
+            <button id="btnA" onclick="doa( '=' )">=</button>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
